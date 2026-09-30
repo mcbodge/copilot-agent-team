@@ -10,7 +10,7 @@ Some files in this repository adapt material from the projects below. The adapte
 - Adapted in:
   - `agents/tdd-red.agent.md`, `agents/tdd-green.agent.md`, `agents/tdd-refactor.agent.md`, and `agents/tdd-cycle.agent.md`, from the TDD Red, Green, and Refactor Phase agents.
   - `agents/csharp-engineer.agent.md`, `instructions/csharp.instructions.md`, and `instructions/csharp-tests.instructions.md`, from the C# Expert agent.
-  - The plan format in `agents/implementation-planner.agent.md` and `agents/work-item-planner.agent.md`, from the Implementation Plan Generation Mode agent.
+  - The plan infrastructure of `agents/implementation-planner.agent.md`, `agents/work-item-planner.agent.md`, and `agents/plan-executor.agent.md` (plan files under `docs/plans/`, `{purpose}-{component}-{version}` file names, front matter and status values, `REQ-`/`TASK-`-style ID prefixes, phase task tables with Completed and Date columns, and the section template), inspired by and adapted from [`agents/implementation-plan.agent.md`](https://github.com/github/awesome-copilot/blob/main/agents/implementation-plan.agent.md) (Implementation Plan Generation Mode).
 
 ## Ponytail
 
@@ -18,6 +18,13 @@ Some files in this repository adapt material from the projects below. The adapte
 - Copyright (c) 2026 DietrichGebert
 - License: MIT (text below)
 - Adapted in: `instructions/lean-code.instructions.md`.
+
+## Karpathy guidelines (andrej-karpathy-skills)
+
+- Source: <https://github.com/multica-ai/andrej-karpathy-skills> (formerly `forrestchang/andrej-karpathy-skills`), derived from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) on LLM coding pitfalls
+- Author: forrestchang (named in the project's `.claude-plugin/plugin.json`; the repository has no LICENSE file or copyright line)
+- License: MIT, as declared in the project's README, `skills/karpathy-guidelines/SKILL.md`, and `.claude-plugin/plugin.json` (text below)
+- Adapted in: `instructions/lean-code.instructions.md` (assumptions and questions before code, a success check before changing code, surgical edits, no handling for impossible cases) and the scope-creep check in `agents/code-reviewer.agent.md`.
 
 ## Inspiration only
 

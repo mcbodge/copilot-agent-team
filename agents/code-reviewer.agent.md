@@ -1,6 +1,6 @@
 ---
 name: Code Reviewer
-description: "Reviews a change without editing it: uncommitted work, a branch, a commit range, or a plan's commits. Checks correctness, the plan's requirements and tests, security, repository standards, and over-engineering, and reports findings by severity with file and line. Use before a commit or pull request."
+description: "Use before a commit or pull request: read-only review of uncommitted work, a branch, a commit range, or a plan's commits for correctness, plan conformance, tests, security, standards, and over-engineering, with findings by severity, file, and line."
 argument-hint: "Scope to review (default: uncommitted changes), optionally a plan file"
 tools: ['read', 'search', 'execute']
 handoffs:
@@ -25,7 +25,7 @@ In priority order; skip a check that doesn't apply.
 3. **Tests**: new behavior has tests that would fail without the change; no tautological asserts, over-mocking, or order-dependent tests.
 4. **Security**: input validation at trust boundaries, authorization on new endpoints and UI actions, injection (SQL, command, path, markup), secrets in code or logs, sensitive data in errors.
 5. **Repository standards**: the instruction files that apply to the changed files, and an installed skill that defines this repository's architecture standard when there is one; read each once.
-6. **Over-engineering**: abstractions nobody needs yet, reinvented standard library or existing helpers, dead flexibility, a new dependency a few lines would replace.
+6. **Over-engineering and scope creep**: abstractions nobody needs yet, reinvented standard library or existing helpers, dead flexibility, a new dependency a few lines would replace, and drive-by edits (reformatting, renames, refactors of untouched code) that don't trace to the request.
 </checks>
 
 <rules>
