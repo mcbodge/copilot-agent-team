@@ -3,6 +3,12 @@ description: "Runs one complete test-first cycle for a single task in one contex
 name: "TDD Cycle"
 argument-hint: "Task and behavior to deliver, optionally the test name and command"
 tools: ["read", "search", "edit", "execute", "vscode/askQuestions"]
+hooks:
+  PreToolUse:
+    - type: command
+      command: 'sh "$HOME/.copilot/hooks/git-guard.sh"'
+      windows: 'powershell -NoProfile -ExecutionPolicy Bypass -Command "& ([IO.Path]::Combine([Environment]::GetFolderPath(''UserProfile''), ''.copilot'', ''hooks'', ''git-guard.ps1''))"'
+      timeout: 10
 ---
 
 # TDD Cycle

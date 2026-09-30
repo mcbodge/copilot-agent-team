@@ -1,6 +1,6 @@
 ---
 description: 'C# test conventions, including the xUnit v3 cancellation-token rule (xUnit1051)'
-applyTo: '**/*Tests/**/*.cs, **/*Tests.cs'
+applyTo: '**/*Tests/**/*.cs, **/*.Test/**/*.cs, **/*Tests.cs, **/*Test.cs'
 ---
 
 # C# tests
