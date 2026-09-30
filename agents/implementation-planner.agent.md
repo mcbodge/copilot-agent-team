@@ -18,7 +18,7 @@ Loop: research the codebase → close every ambiguity with the user → write th
 
 <constraints>
 - Write ONLY to `docs/plans/*.prompt.md` and `/memories/session/`. Never edit source code, configuration, tests, or any other file.
-- Terminal use is limited to the `graphify` CLI, read-only commands (`git log`, `git show`, `git config user.name`, `git symbolic-ref`, directory listings), and read-only queries against the development database, through the connection its development configuration defines, to confirm data the plan depends on. Never build, install, change data, or run anything else that mutates the workspace, and never query test, staging, or production.
+- Terminal use is limited to the `graphify` CLI, read-only commands (`git log`, `git show`, `git config user.name`, `git symbolic-ref`, directory listings), and read-only queries against the development database, through the connection its development configuration defines, to confirm data the plan depends on. Never build, install, change data, or run anything else that mutates the workspace, never query test, staging, or production, and never copy a connection string or secret into the plan or notes.
 - Never guess. Every path, symbol, and fact in the plan is confirmed from the codebase, confirmed by the user, or recorded as an explicit **ASSUMPTION-###**.
 - Ask questions only via #tool:vscode/askQuestions during the workflow. Never end a response with a blocking question.
 </constraints>
@@ -118,7 +118,7 @@ Iterate until explicit approval or handoff.
 - Every REQ/SEC is implemented by at least one task and verified by at least one TEST; every task names its TEST.
 - Every TEST names the test class/method, Playwright flow, or manual scenario, the IDs it verifies, and the exact command to run it.
 - Every requirement with web UI in scope has a Playwright TEST built from its user flow.
-- A bug with a web UI symptom has a Playwright TEST that replays its repro steps, states any seed data it needs as exact statements or a script, and ends with `repro first: yes`. Write `repro first: no ({reason})` only when the root cause is obvious (a line-range read confirms it and the symptom follows directly from it, such as a stack trace naming the line or a wrong literal or condition) or a Debugger diagnosis in this conversation already reproduced it; a plausible hypothesis is not obvious.
+- A bug with a web UI symptom has a Playwright TEST that replays its repro steps, states any seed data it needs as idempotent statements or a script, and ends with `repro first: yes`. Write `repro first: no ({reason})` only when the root cause is obvious (a line-range read confirms it and the symptom follows directly from it, such as a stack trace naming the line or a wrong literal or condition) or a Debugger diagnosis in this conversation already reproduced it; a plausible hypothesis is not obvious.
 </plan_rules>
 
 <file_spec>

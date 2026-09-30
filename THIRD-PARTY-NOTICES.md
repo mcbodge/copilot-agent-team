@@ -10,7 +10,7 @@ Some files in this repository adapt material from the projects below. The adapte
 - Adapted in:
   - `agents/tdd-red.agent.md`, `agents/tdd-green.agent.md`, `agents/tdd-refactor.agent.md`, and `agents/tdd-cycle.agent.md`, from the TDD Red, Green, and Refactor Phase agents.
   - `agents/csharp-engineer.agent.md`, `instructions/csharp.instructions.md`, and `instructions/csharp-tests.instructions.md`, from the C# Expert agent.
-  - The plan infrastructure of `agents/implementation-planner.agent.md`, `agents/work-item-planner.agent.md`, and `agents/plan-executor.agent.md` (plan files under `docs/plans/`, `{purpose}-{component}-{version}` file names, front matter and status values, `REQ-`/`TASK-`-style ID prefixes, phase task tables with Completed and Date columns, and the section template), inspired by and adapted from [`agents/implementation-plan.agent.md`](https://github.com/github/awesome-copilot/blob/main/agents/implementation-plan.agent.md) (Implementation Plan Generation Mode).
+  - The plan infrastructure of `agents/implementation-planner.agent.md`, `agents/work-item-planner.agent.md`, and `agents/plan-executor.agent.md` (plan files with front matter and status values, `{purpose}-{component}-{version}` file names, `REQ-`/`TASK-`-style ID prefixes, phase task tables with Completed and Date columns, and the section template), inspired by and adapted from [`agents/implementation-plan.agent.md`](https://github.com/github/awesome-copilot/blob/main/agents/implementation-plan.agent.md) (Implementation Plan Generation Mode).
 
 ## Ponytail
 

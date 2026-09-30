@@ -29,7 +29,7 @@ Turn reviewer comments on an Azure DevOps pull request into validated commits an
 - **Replies**: English, short, and factual: what changed with the commit hash, or why not. Never claim a fix you didn't validate.
 - **Azure DevOps** through the `azure-devops-cli` skill: read its `SKILL.md` once and note the commands that work. Pull request threads have no `az repos` command; use the skill's `az devops invoke` pattern for the pull request threads resource. On an authentication error, ask the user to run `az login` in the terminal; never collect credentials in chat.
 - **State** lives in `/memories/session/pr-feedback.md`: pull request ID, repository, source and target branches, and one line per thread (id, location, decision, commit, reply posted). After a summary, re-read it and resume.
-- **Bounded output**: build and test output goes to `logs/` (if `git check-ignore -q logs/x` fails, first append `logs/` to the file `git rev-parse --git-path info/exclude` prints); read only filtered failure lines.
+- **Bounded output**: build and test output goes to `logs/` (if `git check-ignore -q logs/x` or `git check-ignore -q .playwright-cli/x` fails, first append that folder to the file `git rev-parse --git-path info/exclude` prints); read only filtered failure lines.
 </rules>
 
 <workflow>

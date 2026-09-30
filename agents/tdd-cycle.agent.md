@@ -27,7 +27,7 @@ Work from the prompt, whether a user or another agent wrote it:
 <boundaries>
 - The prompt is the scope: implement only the requested behavior, and don't pull requirements from issue trackers unless it points to them.
 - Don't commit, push, open pull requests, or update issue trackers unless the prompt explicitly asks.
-- **Dev environment, always**: without asking, write code and tests, run commands and the app with its development configuration, use its development services and storage, and query or change the development database directly (seed, insert, update, delete) through the connection that configuration defines; report each data change. Never touch test, staging, or production environments, data, credentials, storage, deployments, or services unless the user explicitly says so in this conversation.
+- **Dev environment, always**: without asking, write code, tests, and development-only files, run commands and the app with its development configuration, use its development services and storage, and query or change the development database directly (seed, insert, update, delete) through the connection that configuration defines; report each data change. Never touch test, staging, or production environments, data, credentials, storage, deployments, or services unless the user explicitly says so in this conversation.
 - A build blocked by locked output files from a local app or debug session: stop that process by PID and continue; report it instead if it looks like someone else's active work.
 - Ask only for missing non-discoverable information, a login, a secret the user must type into the terminal, or a decision that affects unrelated work; never for routine confirmation.
 </boundaries>
