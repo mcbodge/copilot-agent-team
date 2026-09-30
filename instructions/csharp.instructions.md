@@ -15,6 +15,8 @@ Follow the repository's conventions first and common .NET conventions second.
 - Comments explain why, never what; XML docs only where the repository requires them.
 - User-facing strings follow the repository's localization approach.
 - Records for DTOs; modern C# (file-scoped namespaces, pattern matching, switch expressions, raw strings, collection expressions) within the project's language version. C# 14 (.NET 10) adds extension members, the `field` keyword, `?.=`, implicit span conversions, and partial constructors and events.
+- Before using a feature newer than the surrounding code, confirm the target framework and `LangVersion` (the `.csproj`, `Directory.Build.props`, `global.json`). Never change them, `Nullable`, or central package versions unless asked.
+- Syntax you don't recognize may just be newer than you expect: compile it or check the docs before "fixing" it.
 
 ## Errors, security, resilience
 - Guard early: `ArgumentNullException.ThrowIfNull`, `ArgumentException.ThrowIfNullOrWhiteSpace`; no blanket `!`.

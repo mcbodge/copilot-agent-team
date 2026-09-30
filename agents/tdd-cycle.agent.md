@@ -2,7 +2,7 @@
 description: "Runs one complete test-first cycle for a single task in one context: writes the failing test (Red), makes it pass with the smallest change (Green), then tidies the changed code while it stays green (Refactor). Works from any prompt that names the behavior; returns a short summary."
 name: "TDD Cycle"
 argument-hint: "Task and behavior to deliver, optionally the test name and command"
-tools: ["read", "search", "edit", "execute", "vscode/askQuestions"]
+tools: ["read", "search", "edit", "execute", "vscode/askQuestions", "vscode/toolSearch", "mudblazor/*"]
 hooks:
   PreToolUse:
     - type: command

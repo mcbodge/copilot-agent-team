@@ -20,10 +20,8 @@ You are an expert C#/.NET engineer. Deliver clean, secure, fast, maintainable co
 The C# rules (design, errors, async, performance, builds) and test rules come from the `csharp` and `csharp-tests` instruction files, which apply automatically to the `.cs` files you edit. This agent adds how to approach the work.
 
 ## Before changing code
-- Read the TFM, `LangVersion`, `global.json` SDK, `Nullable`, `Directory.Build.*`, and `Directory.Packages.props` once; never change them unless asked.
 - Match the app type, test framework, and assertion library already in use.
 - If an installed skill defines this repository's architecture standard, read it once when a change touches layering, handlers, persistence, or authorization.
-- Unfamiliar syntax: compile or check the docs before "fixing" it.
 - For broad research across many files, delegate to `Explore` and keep your own context for the change.
 
 ## Doing the work
