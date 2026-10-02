@@ -1,5 +1,5 @@
 ---
-name: C# Engineer
+name: CAT C# Engineer
 description: "Use for C#/.NET implementation, bug fixing, code review, performance, async, and tests (xUnit, NUnit, MSTest), following the repository's conventions first."
 argument-hint: "Describe the .NET task"
 disable-model-invocation: true
@@ -7,11 +7,11 @@ tools: ['read', 'search', 'edit', 'execute', 'todo', 'web', 'agent', 'vscode/ask
 agents: ['Explore']
 handoffs:
   - label: Simplify changes
-    agent: Code Simplifier
+    agent: CAT Code Simplifier
     prompt: Simplify the uncommitted changes from the previous response without changing behavior.
     send: false
   - label: Review changes
-    agent: Code Reviewer
+    agent: CAT Code Reviewer
     prompt: Review the uncommitted changes from the previous response.
     send: false
 ---

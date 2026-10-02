@@ -1,5 +1,5 @@
 ---
-name: Code Simplifier
+name: CAT Code Simplifier
 description: "Use to simplify, clean up, or tidy code that already works without changing behavior: flatter nesting, less redundancy and dead code, clearer names. Defaults to uncommitted changes unless files are named."
 argument-hint: "Files or scope to simplify (default: uncommitted changes)"
 disable-model-invocation: true

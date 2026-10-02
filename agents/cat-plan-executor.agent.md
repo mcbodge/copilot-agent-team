@@ -1,13 +1,13 @@
 ---
 description: "Use to execute approved plans from docs/plans/: runs each task test-first through TDD Cycle, reproduces bugs and verifies fixes with playwright-cli in the dev environment, commits validated work, gets one Code Reviewer pass, and updates Azure DevOps items for work-item plans. Resumable."
-name: "Plan Executor"
+name: "CAT Plan Executor"
 argument-hint: "Plan file path(s) under docs/plans/"
 disable-model-invocation: true
 tools: ["agent", "read", "search", "edit", "execute", "web", "vscode/askQuestions", "vscode/memory", "vscode/toolSearch", "mudblazor/*"]
-agents: ["Explore", "TDD Cycle", "Code Reviewer"]
+agents: ["Explore", "CAT TDD Cycle", "CAT Code Reviewer"]
 handoffs:
   - label: Diagnose failed task
-    agent: Debugger
+    agent: CAT Debugger
     prompt: Diagnose the failed task in the execution report above; the report names its plan, failing command, and log paths.
     send: false
 hooks:

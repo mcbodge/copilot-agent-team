@@ -1,5 +1,5 @@
 ---
-name: Implementation Planner
+name: CAT Implementation Planner
 description: 'Use to plan a feature, bug fix, refactor, or upgrade: researches the codebase (graph first), interviews you until nothing is ambiguous, and writes a deterministic plan to docs/plans/ for the Plan Executor. Never edits code.'
 argument-hint: Describe the feature, bug, refactor, or upgrade to plan
 target: vscode
@@ -8,7 +8,7 @@ tools: ['agent', 'search', 'read', 'edit', 'web/fetch', 'vscode/memory', 'vscode
 agents: ['Explore']
 handoffs:
   - label: Execute plan
-    agent: Plan Executor
+    agent: CAT Plan Executor
     prompt: "Execute the approved plan file saved in docs/plans/ during this conversation."
     send: false
 ---

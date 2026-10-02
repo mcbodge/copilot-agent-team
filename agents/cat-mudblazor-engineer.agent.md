@@ -1,5 +1,5 @@
 ---
-name: MudBlazor Engineer
+name: CAT MudBlazor Engineer
 description: "Use for Blazor Server and MudBlazor UI: pages, dialogs, forms and validation, tables, layout, and component refactors, with component APIs confirmed through the MudBlazor MCP server."
 argument-hint: "Describe the page, dialog, or component change"
 disable-model-invocation: true
@@ -7,11 +7,11 @@ tools: ['read', 'search', 'edit', 'execute', 'todo', 'agent', 'vscode/askQuestio
 agents: ['Explore']
 handoffs:
   - label: Simplify changes
-    agent: Code Simplifier
+    agent: CAT Code Simplifier
     prompt: Simplify the uncommitted changes from the previous response without changing behavior.
     send: false
   - label: Review changes
-    agent: Code Reviewer
+    agent: CAT Code Reviewer
     prompt: Review the uncommitted changes from the previous response.
     send: false
 ---

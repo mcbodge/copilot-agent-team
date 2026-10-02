@@ -1,6 +1,6 @@
 ---
 description: "Use to deliver one task test-first in a single context: failing test (Red), smallest passing change (Green), tidy-up (Refactor). Returns a short summary; the Plan Executor and PR Feedback Resolver call it per task."
-name: "TDD Cycle"
+name: "CAT TDD Cycle"
 argument-hint: "Task and behavior to deliver, optionally the test name and command"
 tools: ["read", "search", "edit", "execute", "vscode/askQuestions", "vscode/toolSearch", "mudblazor/*"]
 hooks:

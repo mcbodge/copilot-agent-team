@@ -1,12 +1,12 @@
 ---
 description: "Use to write failing tests that specify a behavior before it exists (TDD Red phase), then hand off to TDD Green."
-name: "TDD Red"
+name: "CAT TDD Red"
 argument-hint: "Behavior or acceptance criterion to specify"
 disable-model-invocation: true
 tools: ["read", "search", "edit", "execute", "vscode/askQuestions"]
 handoffs:
   - label: Make tests pass (Green)
-    agent: "TDD Green"
+    agent: "CAT TDD Green"
     prompt: Make the failing tests from the previous response pass.
     send: false
 ---

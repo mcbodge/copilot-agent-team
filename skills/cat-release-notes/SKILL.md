@@ -1,5 +1,5 @@
 ---
-name: release-notes
+name: cat-release-notes
 description: 'Drafts user-facing release notes from the commits between two git refs (default: the latest tag to HEAD), grouped by work item and change type. Use when asked for release notes, a changelog entry, "what changed since", or a summary of a release or sprint.'
 ---
 

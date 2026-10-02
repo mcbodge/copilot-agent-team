@@ -1,5 +1,5 @@
 ---
-name: Code Reviewer
+name: CAT Code Reviewer
 description: "Use before a commit or pull request: read-only review of uncommitted work, a branch, a commit range, or a plan's commits for correctness, plan conformance, tests, security, standards, and over-engineering, with findings by severity, file, and line."
 argument-hint: "Scope to review (default: uncommitted changes), optionally a plan file"
 tools: ['read', 'search', 'execute']

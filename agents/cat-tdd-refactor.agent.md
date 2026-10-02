@@ -1,6 +1,6 @@
 ---
 description: "Use to improve the quality, security, and maintainability of just-changed code while its tests stay green (TDD Refactor phase)."
-name: "TDD Refactor"
+name: "CAT TDD Refactor"
 argument-hint: "Changed code to refactor and the behavior to preserve"
 disable-model-invocation: true
 tools: ["read", "search", "edit", "execute", "vscode/askQuestions"]

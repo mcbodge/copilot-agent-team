@@ -1,12 +1,12 @@
 ---
 description: "Use to make failing tests pass with the minimal code (TDD Green phase), then hand off to TDD Refactor."
-name: "TDD Green"
+name: "CAT TDD Green"
 argument-hint: "Failing test(s) or the behavior they specify"
 disable-model-invocation: true
 tools: ["read", "search", "edit", "execute", "vscode/askQuestions"]
 handoffs:
   - label: Refactor
-    agent: "TDD Refactor"
+    agent: "CAT TDD Refactor"
     prompt: Refactor the code changed in the previous response while keeping its tests green.
     send: false
 ---

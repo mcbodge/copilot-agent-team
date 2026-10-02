@@ -1,10 +1,10 @@
 ---
-name: PR Feedback Resolver
+name: CAT PR Feedback Resolver
 description: "Use to resolve Azure DevOps pull request comments: triages active threads (fix, reply, or ask) and, after your confirmation, fixes test-first, commits, pushes the source branch, and replies, resolving only what it fixed."
 argument-hint: "Pull request ID or URL (default: the pull request for the current branch)"
 disable-model-invocation: true
 tools: ['agent', 'read', 'search', 'edit', 'execute', 'vscode/askQuestions', 'vscode/memory']
-agents: ['TDD Cycle']
+agents: ['CAT TDD Cycle']
 hooks:
   PreToolUse:
     - type: command

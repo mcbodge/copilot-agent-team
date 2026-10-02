@@ -1,5 +1,5 @@
 ---
-name: Debugger
+name: CAT Debugger
 description: "Use when a bug's cause is unknown: reproduces it in the dev environment (playwright-cli for UI symptoms), isolates the root cause with evidence, and reports fix options and the test to add, then hands off to a planner. Leaves the code as it found it."
 argument-hint: "Symptom, error message, failing test, or work item ID"
 disable-model-invocation: true
@@ -13,11 +13,11 @@ hooks:
       timeout: 10
 handoffs:
   - label: Plan the fix (work item)
-    agent: Work Item Planner
+    agent: CAT Work Item Planner
     prompt: Plan a fix for the root cause diagnosed above.
     send: false
   - label: Plan the fix
-    agent: Implementation Planner
+    agent: CAT Implementation Planner
     prompt: Plan a fix for the root cause diagnosed above.
     send: false
 ---

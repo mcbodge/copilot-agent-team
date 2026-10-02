@@ -1,13 +1,13 @@
 ---
 description: "Use to refine Azure DevOps Bugs and User Stories (IDs, URLs, or drafts in any language) into English fields with every image preserved, and plan their implementation in docs/plans/ for the Plan Executor. Never writes to Azure DevOps or edits code."
-name: "Work Item Planner"
+name: "CAT Work Item Planner"
 argument-hint: "Work item IDs or URLs, a Team Project link, or pasted drafts"
 disable-model-invocation: true
 tools: ["agent", "read", "search", "edit", "execute", "web", "vscode/askQuestions", "vscode/memory", "vscode/toolSearch", "mudblazor/*"]
 agents: ["Explore"]
 handoffs:
   - label: Execute plan
-    agent: Plan Executor
+    agent: CAT Plan Executor
     prompt: Execute the plan file(s) listed in the previous response.
     send: false
 ---
