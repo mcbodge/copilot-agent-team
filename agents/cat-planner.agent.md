@@ -1,5 +1,5 @@
 ---
-name: CAT Implementation Planner
+name: CAT Planner
 description: 'Use to plan a feature, bug fix, refactor, or upgrade: researches the codebase (graph first), interviews you until nothing is ambiguous, and writes a deterministic plan to docs/plans/ for the Plan Executor. Never edits code.'
 argument-hint: Describe the feature, bug, refactor, or upgrade to plan
 target: vscode

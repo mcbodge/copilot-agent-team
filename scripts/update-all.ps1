@@ -1,36 +1,67 @@
 <#
 .SYNOPSIS
-  Update the Copilot Agent Team and its external companion tools.
+  Install or update the Copilot Agent Team and its external companion tools.
 .DESCRIPTION
-  Pulls the latest from this clone, copies the agents, instructions, skills, and hooks
-  into your user profile, removes copies a rename superseded so the picker never lists
-  two of the same agent, and updates playwright-cli, the azure-devops-cli skill, and
-  graphify when their CLIs are installed. Run it from anywhere; it locates its own repo.
+  Clones this repository if it isn't present yet, otherwise pulls the latest, then copies the
+  agents, instructions, skills, and hooks into your user profile, removes copies a rename
+  superseded so the picker never lists two of the same agent, and updates playwright-cli, the
+  azure-devops-cli skill, and graphify when their CLIs are installed. Run it from anywhere,
+  even from outside a clone.
+.PARAMETER RepoDir
+  Where the repository lives or should be cloned. Defaults to the clone this script runs from,
+  then to $HOME\.copilot\.cache\copilot-agent-team. Also set by $env:COPILOT_AGENT_TEAM_DIR.
+.PARAMETER Url
+  Git URL to clone from when RepoDir has no clone yet. Also set by $env:COPILOT_AGENT_TEAM_URL.
 #>
+param(
+    [string]$RepoDir = $env:COPILOT_AGENT_TEAM_DIR,
+    [string]$Url     = $(if ($env:COPILOT_AGENT_TEAM_URL) { $env:COPILOT_AGENT_TEAM_URL } else { 'https://github.com/mcbodge/copilot-agent-team.git' })
+)
 
 # Native tools (git/npm/gh/uv) print progress to stderr; keep that from aborting the run.
 $ErrorActionPreference = 'Continue'
 $PSNativeCommandUseErrorActionPreference = $false
 
-$repo    = Split-Path -Parent $PSScriptRoot
 $copilot = Join-Path $HOME '.copilot'
+
+# 1. Locate the repo: explicit override, the clone this script runs from, or the cache clone.
+if (-not $RepoDir) {
+    if ($PSScriptRoot) {
+        $fromScript = Split-Path -Parent $PSScriptRoot
+        if ((Test-Path (Join-Path $fromScript 'agents')) -and (Test-Path (Join-Path $fromScript 'instructions'))) {
+            $RepoDir = $fromScript
+        }
+    }
+    if (-not $RepoDir) { $RepoDir = Join-Path (Join-Path $copilot '.cache') 'copilot-agent-team' }
+}
+$repo = $RepoDir
 
 function Copy-Instructions {
     param([string]$Dir)
     if (Test-Path $Dir) { Copy-Item "$repo\instructions\*.instructions.md" $Dir -Force -ErrorAction Stop }
 }
 
-Write-Host "==> Updating copilot-agent-team from $repo" -ForegroundColor Cyan
-
-# 1. Pull the latest.
-if (Test-Path (Join-Path $repo '.git')) {
-    git -C $repo pull --ff-only
-    if ($LASTEXITCODE -ne 0) { Write-Warning "git pull exited $LASTEXITCODE; continuing with the copy." }
-} else {
-    Write-Warning "No .git directory in $repo; skipping git pull."
+if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
+    Write-Error "git is required but was not found on PATH."
+    exit 1
 }
 
-# 2. Copy this repo's pieces into the user profile.
+# 2. Clone on first run, otherwise pull the latest.
+if (Test-Path (Join-Path $repo '.git')) {
+    Write-Host "==> Updating copilot-agent-team in $repo" -ForegroundColor Cyan
+    git -C $repo pull --ff-only
+    if ($LASTEXITCODE -ne 0) { Write-Warning "git pull exited $LASTEXITCODE; continuing with the copy." }
+} elseif ((Test-Path $repo) -and (Get-ChildItem -Force $repo | Select-Object -First 1)) {
+    Write-Error "$repo exists but is not a git clone; pass -RepoDir or remove it."
+    exit 1
+} else {
+    Write-Host "==> Cloning copilot-agent-team into $repo" -ForegroundColor Cyan
+    New-Item -ItemType Directory -Force (Split-Path -Parent $repo) | Out-Null
+    git clone $Url $repo
+    if ($LASTEXITCODE -ne 0) { Write-Error "git clone failed with exit $LASTEXITCODE."; exit 1 }
+}
+
+# 3. Copy this repo's pieces into the user profile.
 New-Item -ItemType Directory -Force "$copilot\agents", "$copilot\skills", "$copilot\hooks", "$copilot\instructions" | Out-Null
 Copy-Item "$repo\agents\*.agent.md" "$copilot\agents" -Force -ErrorAction Stop
 Copy-Item "$repo\skills\*" "$copilot\skills" -Recurse -Force -ErrorAction Stop
@@ -42,14 +73,16 @@ Copy-Instructions "$copilot\instructions"
 Copy-Instructions "$env:APPDATA\Code\User\prompts"
 Copy-Instructions "$env:APPDATA\Code - Insiders\User\prompts"
 
-# 3. Remove copies superseded by the cat- rename so the picker never lists two.
+# 4. Remove copies superseded by the cat- rename so the picker never lists two.
 $old = 'code-reviewer','code-simplifier','csharp-engineer','debugger','implementation-planner',
        'mudblazor-engineer','plan-executor','pr-feedback-resolver','tdd-cycle','tdd-green',
-       'tdd-red','tdd-refactor','work-item-planner'
+       'tdd-red','tdd-refactor','work-item-planner',
+       'cat-implementation-planner','cat-implementation-planner-mudblazor',
+       'cat-work-item-planner','cat-work-item-planner-mudblazor'
 foreach ($name in $old) { Remove-Item "$copilot\agents\$name.agent.md" -ErrorAction SilentlyContinue }
 Remove-Item "$copilot\skills\release-notes" -Recurse -ErrorAction SilentlyContinue
 
-# 4. Update external companion tools when their CLIs are present.
+# 5. Update external companion tools when their CLIs are present.
 if (Get-Command npm -ErrorAction SilentlyContinue) {
     npm install -g '@playwright/cli@latest'
     if (Get-Command playwright-cli -ErrorAction SilentlyContinue) { playwright-cli install --skills }

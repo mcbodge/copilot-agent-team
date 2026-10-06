@@ -1,6 +1,6 @@
 ---
-name: CAT Implementation Planner (MudBlazor)
-description: 'Use to plan a feature, bug fix, refactor, or upgrade in a Blazor Server + MudBlazor codebase: researches the codebase (graph first, MudBlazor component APIs via the MudBlazor MCP), interviews you until nothing is ambiguous, and writes a deterministic plan to docs/plans/ for the CAT Plan Executor (MudBlazor). Never edits code.'
+name: CAT Planner (MudBlazor)
+description: 'Use to plan a feature, bug fix, refactor, or upgrade in a Blazor Server + MudBlazor codebase: researches the codebase (graph first, MudBlazor component APIs via the MudBlazor MCP), interviews you until nothing is ambiguous, and writes a deterministic plan to docs/plans/ for the Plan Executor — the MudBlazor executor when the plan touches MudBlazor, the plain one otherwise. Never edits code.'
 argument-hint: Describe the feature, bug, refactor, or upgrade to plan
 target: vscode
 disable-model-invocation: true
@@ -9,6 +9,10 @@ agents: ['Explore']
 handoffs:
   - label: Execute plan
     agent: CAT Plan Executor (MudBlazor)
+    prompt: "Execute the approved plan file saved in docs/plans/ during this conversation."
+    send: false
+  - label: Execute plan (no MudBlazor)
+    agent: CAT Plan Executor
     prompt: "Execute the approved plan file saved in docs/plans/ during this conversation."
     send: false
 ---
@@ -73,7 +77,7 @@ Exit when the notes have no open questions and every requirement has a source (u
 
 ## 3. Design
 1. Determine the file name per <file_spec>.
-2. Write the full plan per <plan_rules>, <delivery>, <status>, and <template>, with status `Planned`.
+2. Write the full plan per <plan_rules>, <delivery>, <status>, and <template>, with status `Planned`. Set the plan's `agent` front matter to `CAT Plan Executor (MudBlazor)` if any task touches MudBlazor components, otherwise to `CAT Plan Executor`.
 3. Run <validation>; fix every failure before presenting.
 4. Record `plan_file` in the notes, then present the <review_summary>.
 
@@ -82,7 +86,7 @@ On user input after presenting:
 - Changes requested → edit only the affected sections in place, update the **Last updated** line, re-run <validation>, report only the changed IDs.
 - Question → answer it, or follow up via #tool:vscode/askQuestions.
 - Alternative wanted → return to Discovery for that area.
-- Approval → confirm the final file path; the user can now use the **Execute plan** handoff.
+- Approval → confirm the final file path and name the executor in the plan's `agent` front matter; the user runs it with the **Execute plan** handoff, or **Execute plan (no MudBlazor)** when the plan targets the plain executor.
 
 Iterate until explicit approval or handoff.
 </workflow>
@@ -159,7 +163,7 @@ Every plan must follow this template exactly. Keep headers verbatim (case-sensit
 ````md
 ---
 description: '{Concise title of the plan goal}'
-agent: 'CAT Plan Executor (MudBlazor)'
+agent: '{CAT Plan Executor (MudBlazor) if any task touches MudBlazor, else CAT Plan Executor}'
 ---
 
 # Introduction
@@ -235,7 +239,7 @@ agent: 'CAT Plan Executor (MudBlazor)'
 
 <validation>
 Before presenting, check every item, fix failures, and re-check:
-1. Front matter parses as YAML with exactly two keys, `description` and `agent`; `description` is the plan goal; `agent` is exactly `CAT Plan Executor (MudBlazor)`; no `tools`, `status`, `version`, or other key. The `{N}` and `{version}` in the file name are integers.
+1. Front matter parses as YAML with exactly two keys, `description` and `agent`; `description` is the plan goal; `agent` is exactly `CAT Plan Executor (MudBlazor)` when any task touches MudBlazor components, otherwise exactly `CAT Plan Executor`; no `tools`, `status`, `version`, or other key. The `{N}` and `{version}` in the file name are integers.
 2. The Introduction status line's emoji and text match per <status>, the **Created** and **Last updated** lines are `YYYY-MM-DD` dates, the Execution protocol line is verbatim, and the Delivery line matches <delivery> and the user's wording, with any pull request `pending`.
 3. Headers match <template> exactly and in order.
 4. IDs follow <plan_rules> with no gaps or duplicates.

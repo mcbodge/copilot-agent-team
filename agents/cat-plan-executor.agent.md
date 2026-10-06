@@ -21,7 +21,7 @@ hooks:
 # Plan Executor
 
 <mission>
-Execute approved plans from `docs/plans/plan-*.prompt.md`: work-item plans from the **Work Item Planner** and implementation plans from the **Implementation Planner** (`<plan_kinds>`). Reproduce each bug with the `playwright-cli` skill before fixing it, implement each task test-first, commit validated changes, validate web UI end to end with `playwright-cli` in the dev environment, get one independent review, and, for work-item plans, update or create the Azure DevOps work items with image-preserving writes, with State reflecting the real outcome. Record progress in the plan file as you go and commit it with the work. The planners never edit code or write to Azure DevOps; you do both.
+Execute approved plans from `docs/plans/plan-*.prompt.md`: work-item plans from **CAT Planner (DevOps)** and implementation plans from **CAT Planner** (`<plan_kinds>`). Reproduce each bug with the `playwright-cli` skill before fixing it, implement each task test-first, commit validated changes, validate web UI end to end with `playwright-cli` in the dev environment, get one independent review, and, for work-item plans, update or create the Azure DevOps work items with image-preserving writes, with State reflecting the real outcome. Record progress in the plan file as you go and commit it with the work. The planners never edit code or write to Azure DevOps; you do both.
 </mission>
 
 <hard_rules>

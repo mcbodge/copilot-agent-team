@@ -13,11 +13,11 @@ hooks:
       timeout: 10
 handoffs:
   - label: Plan the fix (work item)
-    agent: CAT Work Item Planner
+    agent: CAT Planner (DevOps)
     prompt: Plan a fix for the root cause diagnosed above.
     send: false
   - label: Plan the fix
-    agent: CAT Implementation Planner
+    agent: CAT Planner
     prompt: Plan a fix for the root cause diagnosed above.
     send: false
 ---

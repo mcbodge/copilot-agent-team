@@ -10,7 +10,7 @@ Some files in this repository adapt material from the projects below. The adapte
 - Adapted in:
   - `agents/cat-tdd-red.agent.md`, `agents/cat-tdd-green.agent.md`, `agents/cat-tdd-refactor.agent.md`, and `agents/cat-tdd-cycle.agent.md`, from the TDD Red, Green, and Refactor Phase agents.
   - `agents/cat-csharp-engineer.agent.md`, `instructions/csharp.instructions.md`, and `instructions/csharp-tests.instructions.md`, from the C# Expert agent.
-  - The plan infrastructure of `agents/cat-implementation-planner.agent.md`, `agents/cat-work-item-planner.agent.md`, and `agents/cat-plan-executor.agent.md` (plan files with front matter and status values, `{purpose}-{component}-{version}` file names, `REQ-`/`TASK-`-style ID prefixes, phase task tables with Completed and Date columns, and the section template), inspired by and adapted from [`agents/implementation-plan.agent.md`](https://github.com/github/awesome-copilot/blob/main/agents/implementation-plan.agent.md) (Implementation Plan Generation Mode).
+  - The plan infrastructure of `agents/cat-planner.agent.md`, `agents/cat-planner-devops.agent.md`, and `agents/cat-plan-executor.agent.md` (plan files with front matter and status values, `{purpose}-{component}-{version}` file names, `REQ-`/`TASK-`-style ID prefixes, phase task tables with Completed and Date columns, and the section template), inspired by and adapted from [`agents/implementation-plan.agent.md`](https://github.com/github/awesome-copilot/blob/main/agents/implementation-plan.agent.md) (Implementation Plan Generation Mode).
 
 ## Ponytail
 
@@ -31,7 +31,7 @@ Some files in this repository adapt material from the projects below. The adapte
 No text or code reused, listed for credit:
 
 - `agents/cat-code-simplifier.agent.md` follows the idea of the code-simplifier agent in [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official).
-- The interview protocol in `agents/cat-implementation-planner.agent.md` and `agents/cat-work-item-planner.agent.md` (one decision per question via the ask-questions tool, each with a recommended answer, and the codebase explored before the user is asked) follows the idea of Michele Ferracin's[`agents/mfse-plan-on-roids.agent.md`](https://github.com/MFSoftwareEngineering/mfse-softwarefactory/blob/main/agents/mfse-plan-on-roids.agent.md) in MFSoftwareEngineering/mfse-softwarefactory.
+- The interview protocol in `agents/cat-planner.agent.md` and `agents/cat-planner-devops.agent.md` (one decision per question via the ask-questions tool, each with a recommended answer, and the codebase explored before the user is asked) follows the idea of Michele Ferracin's[`agents/mfse-plan-on-roids.agent.md`](https://github.com/MFSoftwareEngineering/mfse-softwarefactory/blob/main/agents/mfse-plan-on-roids.agent.md) in MFSoftwareEngineering/mfse-softwarefactory.
 
 ## MIT License text
 
